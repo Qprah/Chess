@@ -12,29 +12,17 @@ public class King extends ChessPiece {
     }
 
     public boolean isValidMove(int currentRow, int currentCol, int futureRow, int futureCol) {
-//        int startrow = currentRow - 1;
-//        int startcol = currentCol - 1;
-
-        for (int i = currentRow - 1; i < currentRow+2; i++) {
-            for (int j = currentCol - 1; j < currentCol + 2; j++) {
+        for (int i = currentRow - 1; i < currentRow + 2; i++) { //offsets the starting row and runs the loop 3 times
+            for (int j = currentCol - 1; j < currentCol + 2; j++) {// offsets the starting col and runs the loop 3 times
 
                 if (futureRow == i && futureCol == j) {
-                    System.out.println(futureRow + " " + futureCol + " " + i + "" + j + " " + (futureRow == i && futureCol == j) + "           " + currentRow + " " + currentCol);
                     return true;
-
                 }
-                if (futureRow == currentRow && futureCol == currentRow) {
+                if (getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(futureRow, futureCol))) {
                     return false;
                 }
-                /**
-                if(super.getBoard().getPieceColor(currentRow, currentCol)
-                        == super.getBoard().getPieceColor(7, 4)){
-                    return false;
-                }
-                 */
             }
         }
-
         return false;
     }
 }
