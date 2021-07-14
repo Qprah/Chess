@@ -372,6 +372,4 @@ public class Board {
         boardState[7][4] = new King(black, this);
 
     }
-
-
 }//Chessboard
