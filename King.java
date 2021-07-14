@@ -1,5 +1,5 @@
 public class King extends ChessPiece {
-    private boolean gg=true;
+    private boolean gg = true;
 
     public King(String newColor, Board theBoard) {
         super("King", newColor, theBoard);

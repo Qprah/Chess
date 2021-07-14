@@ -12,11 +12,16 @@ public class Castle extends ChessPiece {
 
     public boolean isValidMove(int currentRow, int currentCol, int futureRow, int futureCol) {
         int num = 10;
+        boolean gg = true;
 
         // partially works but detects the white and black
         if (getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(futureRow, futureCol))) {
             return false;
         }
+//=====================================================
+//        if (getBoard().hasPiece(futureRow,futureCol)) {
+//
+//        }
 
         //increasing rows
         for (int i = 0; i < num; i++) {
@@ -32,3 +37,5 @@ public class Castle extends ChessPiece {
         return false;
     }
 }
+
+

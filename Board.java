@@ -360,6 +360,7 @@ public class Board {
         boardState[0][5] = new Bishop(white, this);
         boardState[0][3] = new Queen(white, this);
         boardState[0][4] = new King(white, this);
+        boardState[3][4] = new Pawn(white, this);
 
         // Create all the black pieces.
         boardState[7][0] = new Castle(black, this);
