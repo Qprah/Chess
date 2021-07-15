@@ -57,6 +57,7 @@ public class Bishop extends ChessPiece {
             l++;
         } while ((l < 10));
 
+
         return false;
     }
 
