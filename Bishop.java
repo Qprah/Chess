@@ -61,6 +61,22 @@ public class Bishop extends ChessPiece {
         return false;
     }
 
+    /**
+     * make a method - checks the rows,
+     * columns,
+     * diagonals.
+     *
+     * startR, startC, endR, endC
+     * rows - i found the piece on the row
+     *
+     * say it's on right side
+     *
+     * ---cp---------P----
+     *
+     *
+     * ----C------------
+     */
+
 }
 
 

@@ -159,7 +159,7 @@ public class Board {
             }
 
         } else {
-            System.out.println("Warning, drawPiece called but no piece found");
+            // System.out.println("Warning, drawPiece called but no piece found");
         }
     }
 
@@ -246,9 +246,9 @@ public class Board {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 if (hasPiece(row, col) && getPieceColor(row, col).equals(givenColor)) {
                     // uncomment for assignment
-                    //       if(getPiece(row,col) instanceof King){
-                    returnVal = true;
-                    //      }
+                    if (getPiece(row, col) instanceof King) {
+                        returnVal = true;
+                    }
                 }
             }
         }

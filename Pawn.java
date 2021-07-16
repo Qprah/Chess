@@ -22,6 +22,9 @@ public class Pawn extends ChessPiece {
  *
  *   ----- Kills diagonally (can ignore and move forward or it can kill diagonally)
  *
+ *   current Row + 1  , current Col -1 +i   1<i<=3
+ *
+ *
  */
 
         //TWO STEPS CODE ---------------------------------------------------------------------------------------------------------------------------
@@ -29,7 +32,7 @@ public class Pawn extends ChessPiece {
         if (currentRow == 1 && getBoard().getPieceColor(currentRow, currentCol).equals(Board.white)) {  // have two steps if It's in row 6 or Row 1
             int num = 2;  //more work required
             for (int i = 1; i <= num; i++) {
-                if (getBoard().hasPiece(currentRow + i, currentCol)) {  // if any piece in its column, it won't be able to kill it.
+                if (getBoard().hasPiece(currentRow + i, currentCol)) {  // if any piece ien its column, it won't be able to kill it.
                     return false;
                 } else if (futureRow == currentRow + i && futureCol == currentCol) {//iteration for making the pawn go up 2 tiles
                     return true;

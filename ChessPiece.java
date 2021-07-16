@@ -73,4 +73,9 @@ public abstract class ChessPiece {
         return false;
     }
 
+    public boolean checkDiagonal(){
+
+        return false;
+    }
+
 }
