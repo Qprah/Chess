@@ -360,7 +360,7 @@ public class Board {
 //        boardState[0][5] = new Bishop(white, this);
 //        boardState[0][3] = new Queen(white, this);
 //        boardState[0][4] = new King(white, this);
-//        boardState[3][4] = new Queen(white, this);
+       boardState[3][4] = new Queen(black, this);
 //
 //        // Create all the black pieces.
 //        boardState[7][0] = new Castle(black, this);
@@ -369,8 +369,8 @@ public class Board {
 //        boardState[7][6] = new Knight(black, this);
 //        boardState[7][2] = new Bishop(black, this);
 //        boardState[7][5] = new Bishop(black, this);
-        boardState[5][5] = new Queen(black, this);
-        boardState[3][3] = new Bishop(white, this);
+       // boardState[5][5] = new Queen(black, this);
+        boardState[3][0] = new Bishop(white, this);
 
     }
 }//Chessboard
