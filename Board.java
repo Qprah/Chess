@@ -320,7 +320,7 @@ public class Board {
     // sets the pieces
     // Hard coded to set the pieces.
     public void resetBoard() {
-// Add After you have created pieces
+ // Add After you have created pieces
 
 
         // Base Board
@@ -370,8 +370,11 @@ public class Board {
         boardState[7][2] = new Bishop(black, this);
         boardState[7][5] = new Bishop(black, this);
  */
-        boardState[5][5] = new Queen(black, this);
-        boardState[3][0] = new Bishop(white, this);
+        boardState[5][3] = new Queen(black, this);
+        boardState[2][3] = new Queen(black, this);
+        boardState[5][1] = new Queen(black, this);
+        boardState[5][6] = new Queen(black, this);
+        boardState[3][3] = new Castle(white, this);
 
     }
 }//Chessboard
