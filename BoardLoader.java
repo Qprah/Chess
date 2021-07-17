@@ -33,7 +33,7 @@ public class BoardLoader {
                     for (int j = 0; j < board[i].length; j++) {
                         if (sc.hasNext()) {
                             board[i][j] = sc.next();
-                            System.out.print(" " + board[i][j]);
+                            //System.out.print(" " + board[i][j]);
                         }
                     }
                 }

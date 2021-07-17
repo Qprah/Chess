@@ -12,6 +12,7 @@ public class Bishop extends ChessPiece {
         super.setGraphics("BishopBlack.png", "BishopWhite.png");
     }
 
+
     public boolean isValidMove(int currentRow, int currentCol, int futureRow, int futureCol) {
 
         //bishop works properly
@@ -25,10 +26,15 @@ public class Bishop extends ChessPiece {
 
         // For top-right diagonal
         for (int i = 1; i <= maxIterationsTopRight(currentRow, currentCol); i++) {
-
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow+i, currentCol+i))) {
+                if(futureRow==currentRow+i && futureCol == currentCol+i){
+                    return true;
+                }
+            }
             if (getBoard().hasPiece(currentRow + i, currentCol + i)) {
                 break;
-            } else {
+            }
+            else {
                 if (currentRow + i == futureRow && currentCol + i == futureCol) {
                     return true;
                 }
@@ -37,6 +43,11 @@ public class Bishop extends ChessPiece {
 
         // For bottom-left diagonal
         for (int i = 1; i <= maxIterationsBottomLeft(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow-i, currentCol-i))) {
+                if(futureRow==currentRow-i && futureCol == currentCol-i){
+                    return true;
+                }
+            }
             if (getBoard().hasPiece(currentRow - i, currentCol - i)) {
                 break;
             } else {
@@ -49,6 +60,11 @@ public class Bishop extends ChessPiece {
 
         // For bottom-right diagonal
         for (int i = 1; i <= maxIterationsBottomRight(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow-i, currentCol+i))) {
+                if(futureRow==currentRow-i && futureCol == currentCol+i){
+                    return true;
+                }
+            }
             if (getBoard().hasPiece(currentRow - i, currentCol + i)) {
                 break;
             } else {
@@ -60,6 +76,11 @@ public class Bishop extends ChessPiece {
 
         // For top-left diagonal
         for (int i = 1; i <= maxIterationsTopLeft(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow+i, currentCol-i))) {
+                if(futureRow==currentRow+i && futureCol == currentCol-i){
+                    return true;
+                }
+            }
             if (getBoard().hasPiece(currentRow + i, currentCol - i)) {
                 break;
             } else {

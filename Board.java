@@ -350,7 +350,7 @@ public class Board {
                 boardState[row][col] = new Pawn(Board.black, this);
         }
 
-
+/**
         // Create all the White pieces
         boardState[0][0] = new Castle(white, this);
         boardState[0][7] = new Castle(white, this);
@@ -369,7 +369,8 @@ public class Board {
         boardState[7][6] = new Knight(black, this);
         boardState[7][2] = new Bishop(black, this);
         boardState[7][5] = new Bishop(black, this);
-        // boardState[5][5] = new Queen(black, this);
+ */
+        boardState[5][5] = new Queen(black, this);
         boardState[3][0] = new Bishop(white, this);
 
     }
