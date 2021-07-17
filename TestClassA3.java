@@ -15,7 +15,7 @@ public class TestClassA3 {
 //        StdDraw.show(pauseTime); // Draw all art and pause for 1 second
 //        phase3();
 
-        //testBoardLoader();
+        testBoardLoader();
         testQ();
 
 
@@ -38,10 +38,10 @@ public class TestClassA3 {
         // clear the board make a new setting
     }
 
-//    public static void testBoardLoader(){
-//        Board b =new Board();
-//        b.drawBoard();
-//        BoardLoader.loadBoardState(b,BoardLoader.folder + BoardLoader.fileName);
-//    }
+    public static void testBoardLoader(){
+        Board b =new Board();
+        b.drawBoard();
+        BoardLoader.loadBoardState(b,BoardLoader.folder + BoardLoader.fileName);
+    }
 }
 

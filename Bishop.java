@@ -92,20 +92,20 @@ public class Bishop extends ChessPiece {
         return false;
     }
 
-    public int maxIterationsTopRight(int currentRow, int currentCol) {
+    public static int maxIterationsTopRight(int currentRow, int currentCol) {
         int iterations;
         iterations = Math.min((Board.BOARD_SIZE - 1) - currentRow, (Board.BOARD_SIZE - 1) - currentCol);
         return iterations;
     }
 
-    public int maxIterationsBottomLeft(int currentRow, int currentCol) {
+    public static int maxIterationsBottomLeft(int currentRow, int currentCol) {
         int iterations;
 
         iterations = Math.min(currentRow, currentCol);
         return iterations;
     }
 
-    public int maxIterationsBottomRight(int currentRow, int currentCol) {
+    public static int maxIterationsBottomRight(int currentRow, int currentCol) {
         int iterations = 0;
         int cr = currentRow;
         int cc = currentCol;
@@ -118,7 +118,7 @@ public class Bishop extends ChessPiece {
         return iterations;
     }
 
-    public int maxIterationsTopLeft(int currentRow, int currentCol) {
+    public static int maxIterationsTopLeft(int currentRow, int currentCol) {
         int iterations = 0;
         int cr = currentRow;
         int cc = currentCol;
