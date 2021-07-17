@@ -11,61 +11,169 @@ public class Queen extends ChessPiece {
 
     }
     public boolean isValidMove(int currentRow, int currentCol, int futureRow, int futureCol) {
+        int num = Board.BOARD_SIZE;
 
-        //Queen works partially
-        if (getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(futureRow, futureCol))) {
-            return false;
+        for (int i = 1; i <= (num - 1) - currentCol; i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow, currentCol + i))) {
+                if (futureRow == currentRow && futureCol == currentCol + i) {
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow, currentCol + i)) {
+                break;
+            } else {
+                if (currentRow == futureRow && currentCol + i == futureCol) {
+                    return true;
+                }
+            }
         }
-    /**
-     * The do-while loops are responsible for the diagonal movement of the Queen.
-     *
-     * */
-    // diagonal in top-right direction.
-    int i = 0;
-        do {
-        if (currentRow + i == futureRow && currentCol + i == futureCol) {
-            return true;
+        for (int i = 1; i <= currentCol; i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow, currentCol - i))) {
+                if (futureRow == currentRow && futureCol == currentCol - i) {
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow, currentCol - i)) {
+                break;
+            } else {
+                if (currentRow == futureRow && currentCol - i == futureCol) {
+                    return true;
+                }
+            }
         }
-        i++;
-    } while ((i < 10));
-
-    // diagonal in bottom-left direction
-    int j = 0;
-        do {
-        if (currentRow - j == futureRow && currentCol - j == futureCol) {
-            return true;
+        for (int i = 1; i <= (num - 1) - currentRow; i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow+i, currentCol))) {
+                if (futureRow == currentRow + i && futureCol == currentCol) {
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow + i, currentCol)) {
+                break;
+            } else {
+                if (currentRow + i == futureRow && currentCol== futureCol) {
+                    return true;
+                }
+            }
         }
-        j++;
-    } while ((j < 10));
-
-    // diagonal in top-left direction
-    int k = 0;
-        do {
-        if (currentRow + k == futureRow && currentCol - k == futureCol) {
-            return true;
+        for (int i = 1; i <= currentRow; i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow - i, currentCol))) {
+                if (futureRow == currentRow - i  && futureCol == currentCol) {
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow - i, currentCol)) {
+                break;
+            } else {
+                if (currentRow - i == futureRow && currentCol== futureCol) {
+                    return true;
+                }
+            }
         }
-        k++;
-    } while ((k < 10));
-
-    // diagonal in bottom-right direction
-    int l = 0;
-        do {
-        if (currentRow - l == futureRow && currentCol + l == futureCol) {
-            return true;
+        // For top-right diagonal
+        for (int i = 1; i <= maxIterationsTopRight(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow+i, currentCol+i))) {
+                if(futureRow==currentRow+i && futureCol == currentCol+i){
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow + i, currentCol + i)) {
+                break;
+            }
+            else {
+                if (currentRow + i == futureRow && currentCol + i == futureCol) {
+                    return true;
+                }
+            }
         }
-        l++;
-    } while ((l < 10));
-        int num = 10;
-        for (int m = 0; m < num; m++) {
 
-            //Rows movement for both pieces
-            if ((currentRow + m == futureRow || currentRow - m == futureRow) && currentCol == futureCol)
-                return true;
+        // For bottom-left diagonal
+        for (int i = 1; i <= maxIterationsBottomLeft(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow-i, currentCol-i))) {
+                if(futureRow==currentRow-i && futureCol == currentCol-i){
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow - i, currentCol - i)) {
+                break;
+            } else {
+                if (currentRow - i == futureRow && currentCol - i == futureCol) {
+                    return true;
+                }
 
-            // Column movement for both pieces
-            if ((currentCol - m == futureCol || currentCol + m == futureCol) && currentRow == futureRow)
-                return true;
+            }
+        }
+
+        // For bottom-right diagonal
+        for (int i = 1; i <= maxIterationsBottomRight(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow-i, currentCol+i))) {
+                if(futureRow==currentRow-i && futureCol == currentCol+i){
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow - i, currentCol + i)) {
+                break;
+            } else {
+                if (currentRow - i == futureRow && currentCol + i == futureCol) {
+                    return true;
+                }
+            }
+        }
+
+        // For top-left diagonal
+        for (int i = 1; i <= maxIterationsTopLeft(currentRow, currentCol); i++) {
+            if (!getBoard().getPieceColor(currentRow, currentCol).equals(getBoard().getPieceColor(currentRow+i, currentCol-i))) {
+                if(futureRow==currentRow+i && futureCol == currentCol-i){
+                    return true;
+                }
+            }
+            if (getBoard().hasPiece(currentRow + i, currentCol - i)) {
+                break;
+            } else {
+                if (currentRow + i == futureRow && currentCol - i == futureCol) {
+                    return true;
+                }
+            }
         }
         return false;
-}
+    }
+
+    public int maxIterationsTopRight(int currentRow, int currentCol) {
+        int iterations;
+        iterations = Math.min((Board.BOARD_SIZE - 1) - currentRow, (Board.BOARD_SIZE - 1) - currentCol);
+        return iterations;
+    }
+
+    public int maxIterationsBottomLeft(int currentRow, int currentCol) {
+        int iterations;
+
+        iterations = Math.min(currentRow, currentCol);
+        return iterations;
+    }
+
+    public int maxIterationsBottomRight(int currentRow, int currentCol) {
+        int iterations = 0;
+        int cr = currentRow;
+        int cc = currentCol;
+        if ((cr <= 7 && cc == 0) || (cr <= 6 && cc == 1) || (cr <= 5 && cc == 2) || (cr <= 4 && cc == 3)
+                || (cr <= 3 && cc == 4) || (cr <= 2 && cc == 5) || (cr <= 1 && cc == 6) || (cr <= 0 && cc == 7)) {
+            iterations = currentRow;
+        } else {
+            iterations = (Board.BOARD_SIZE - 1) - currentCol;
+        }
+        return iterations;
+    }
+
+    public int maxIterationsTopLeft(int currentRow, int currentCol) {
+        int iterations = 0;
+        int cr = currentRow;
+        int cc = currentCol;
+        if ((cr >= 0 && cc == 7) || (cr >= 1 && cc == 6) || (cr >= 2 && cc == 5) || (cr >= 3 && cc == 4)
+                || (cr >= 4 && cc == 3) || (cr >= 5 && cc == 2) || (cr >= 6 && cc == 1) || (cr >= 7 && cc == 0)) {
+            iterations = (Board.BOARD_SIZE - 1) - currentRow;
+        } else {
+            iterations = currentCol;
+        }
+        return iterations;
+    }
+
 }
