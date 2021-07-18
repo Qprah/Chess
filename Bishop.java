@@ -1,4 +1,8 @@
-
+/**
+ * Bishop can move diagonally only in top-right, top-left, bottom-right and bottom-left.
+ *
+ * Can't jump over
+ */
 public class Bishop extends ChessPiece {
 
     public Bishop(String newColor, Board theBoard) {
@@ -96,7 +100,10 @@ public class Bishop extends ChessPiece {
     }
 
     //All methods below have been called in Queen class;
-    /**(calculates the number of tiles diagonally from current position of selected piece)*/
+
+    /**
+     * (calculates the number of tiles diagonally from current position of selected piece)
+     */
     // how many times the loop is run for going up-right
     public static int maxIterationsTopRight(int currentRow, int currentCol) {
         int iterations;

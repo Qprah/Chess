@@ -10,7 +10,6 @@
  * is allowed 2 steps in their starting position and then 1 step afterwards.
  *
  * one extra set is included to handle the exceptions - such as the Pawns on the column 0 or 7
- *
  */
 
 public class Pawn extends ChessPiece {

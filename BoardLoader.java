@@ -65,7 +65,9 @@ public class BoardLoader {
     // this method associates the Alphabets to the different color chessPieces that are
     // returned in loadPiecesFromString method as a parameter for setPiece.
     private static ChessPiece loadChessPiece(Board targetBoard, String code) {
-        if (code.charAt(0) == 'W') {
+        //White pieces
+        if (code.charAt(0) == 'W')
+        {
             if (code.charAt(1) == 'P') {
                 return new Pawn("WHITE", targetBoard);
             }
@@ -85,7 +87,9 @@ public class BoardLoader {
                 return new King("WHITE", targetBoard);
             }
         }
-        if (code.charAt(0) == 'B') {
+        // Black pieces
+        if (code.charAt(0) == 'B')
+        {
             if (code.charAt(1) == 'P') {
                 return new Pawn("BLACK", targetBoard);
             }

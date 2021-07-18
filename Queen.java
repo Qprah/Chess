@@ -1,3 +1,9 @@
+/**
+ * Queen can move diagonally (top-right, top-left, bottom-right and bottom-left)
+ * and in Up, Down , Left and Right directions.
+ *
+ * Can't jump over
+ */
 public class Queen extends ChessPiece {
 
     public Queen(String newColor, Board theBoard) {

@@ -1,3 +1,8 @@
+/**
+ * Castle can move Up, Down , Left and Right
+ *
+ * Can't Jump over.
+ */
 
 public class Castle extends ChessPiece {
 
