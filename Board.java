@@ -320,7 +320,7 @@ public class Board {
     // sets the pieces
     // Hard coded to set the pieces.
     public void resetBoard() {
- // Add After you have created pieces
+        // Add After you have created pieces
 
 
         // Base Board
@@ -352,29 +352,26 @@ public class Board {
 
 
         // Create all the White pieces
-//        boardState[0][0] = new Castle(white, this);
-//        boardState[0][7] = new Castle(white, this);
-//        boardState[0][1] = new Knight(white, this);
-//        boardState[0][6] = new Knight(white, this);
-//        boardState[0][2] = new Bishop(white, this);
-//        boardState[0][5] = new Bishop(white, this);
-//        boardState[0][3] = new Queen(white, this);
-//        boardState[0][4] = new King(white, this);
-//        boardState[3][4] = new Queen(black, this);
+        boardState[0][0] = new Castle(white, this);
+        boardState[0][7] = new Castle(white, this);
+        boardState[0][1] = new Knight(white, this);
+        boardState[0][6] = new Knight(white, this);
+        boardState[0][2] = new Bishop(white, this);
+        boardState[0][5] = new Bishop(white, this);
+        boardState[0][3] = new Queen(white, this);
+        boardState[0][4] = new King(white, this);
+
 
         // Create all the black pieces.
-//        boardState[7][0] = new Castle(black, this);
-//        boardState[7][7] = new Castle(black, this);
-//        boardState[7][1] = new Knight(black, this);
-//        boardState[7][6] = new Knight(black, this);
-//        boardState[7][2] = new Bishop(black, this);
-//        boardState[7][5] = new Bishop(black, this);
+        boardState[7][0] = new Castle(black, this);
+        boardState[7][7] = new Castle(black, this);
+        boardState[7][1] = new Knight(black, this);
+        boardState[7][6] = new Knight(black, this);
+        boardState[7][2] = new Bishop(black, this);
+        boardState[7][5] = new Bishop(black, this);
+        boardState[7][3] = new Queen(black, this);
+        boardState[7][4] = new King(black, this);
 
-        boardState[2][6] = new Pawn(white, this);
-        boardState[2][3] = new Bishop(black, this);
-        boardState[5][1] = new Queen(black, this);
-        boardState[5][6] = new Queen(black, this);
-        boardState[3][3] = new Knight(white, this);
 
     }
 }//Chessboard

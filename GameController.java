@@ -16,8 +16,8 @@ public class GameController {
         // Comment out when loading from file.
         board.resetBoard(); // reset pieces.
 
-        // *** Uncomment to run with board from file.
-        //BoardLoader.loadBoardState(board, "StandardBoard.txt");
+        // *** Uncomment to run with board from file.                           // ready to run on the file!
+        //BoardLoader.loadBoardState(board, BoardLoader.folder  + BoardLoader.fileName);
 
         board.drawBoard(); // background board
         board.drawPieces(); // Pieces only (formerly drawPieces but that was confusing. )

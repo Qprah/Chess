@@ -3,7 +3,12 @@ import java.util.Scanner;
 
 public class BoardLoader {
 
-    private static String[][] board;
+    // the boardLoader test is in testClass , it can be used to run the
+    // game itself, but currently only the Board class is responsible for the board setting.
+
+    private static String[][] Board;
+
+
     public static String folder = ".\\Boards\\";
     public static String fileName = "StandardBoard.txt";
 
@@ -24,27 +29,30 @@ public class BoardLoader {
             int rows = sc.nextInt(); // read the first int and stores it as rows
             int cols = sc.nextInt(); // reads the second int and stores it as cols
 
-            board = new String[rows][cols];  // initializes the board to have 8 rows and 8 columns
+            Board = new String[rows][cols];  // initializes the board to have 8 rows and 8 columns
 
-            for (int i = board.length-1 ; i >= 0; i--) {
+            // iteration through the matrix and the tokens are set in Board array
+            for (int i = Board.length - 1; i >= 0; i--) {
+
                 str = br.readLine();
                 sc = new Scanner(str);
+
                 while (sc.hasNext()) {
-                    for (int j = 0; j < board[i].length; j++) {
+                    for (int j = 0; j < Board[i].length; j++) {
                         if (sc.hasNext()) {
-                            board[i][j] = sc.next();
-                            //System.out.print(" " + board[i][j]);
+                            Board[i][j] = sc.next();
                         }
                     }
                 }
-                System.out.println();
             }
-        } catch (IOException e) {
+        }
+        catch (IOException e) {
             e.printStackTrace();
         }
-        return board;
+        return Board;
     }
 
+    // sets the pieces and draws them on the targetBoard
     private static void loadPiecesFromString(Board targetBoard, String[][] boardCodes) {
         for (int i = 0; i < boardCodes.length; i++) {
             for (int j = 0; j < boardCodes[i].length; j++) {
@@ -54,6 +62,8 @@ public class BoardLoader {
         }
     }
 
+    // this method associates the Alphabets to the different color chessPieces that are
+    // returned in loadPiecesFromString method as a parameter for setPiece.
     private static ChessPiece loadChessPiece(Board targetBoard, String code) {
         if (code.charAt(0) == 'W') {
             if (code.charAt(1) == 'P') {
@@ -95,7 +105,6 @@ public class BoardLoader {
                 return new King("BLACK", targetBoard);
             }
         }
-
         return null;
     }
 }
