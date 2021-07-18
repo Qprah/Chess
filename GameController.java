@@ -71,7 +71,7 @@ public class GameController {
             // Selection Notes: If no tile is selected, and the tile clicked is the color of the player whos turn it currently is
             // then select that tile. If a tile is selected 1 of 3 things happen the next time a mouse press is detected
             // 1. a different tile of the same color is selected - update the selection
-            // 2. a move is attempted (either 1 diagional forward or jumping over 1 diag forward and landing on 2 diag forward)
+            // 2. a move is attempted (either 1 diagonal forward or jumping over 1 diagonal forward and landing on 2 diagonal forward)
             /// -- either fails and deselect OR
             /// -- succeeds and the move is executed, then the turn ends.
             // 3. an invalid move is selected / something else is clicked - deselect any tile.

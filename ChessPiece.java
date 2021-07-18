@@ -72,10 +72,4 @@ public abstract class ChessPiece {
         System.out.println("Should not get called");
         return false;
     }
-
-    public boolean checkDiagonal(){
-
-        return false;
-    }
-
 }

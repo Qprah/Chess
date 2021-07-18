@@ -10,7 +10,7 @@ public class Knight extends ChessPiece {
         super.setGraphics("KnightBlack.png", "KnightWhite.png");
 
     }
-    //Phase 1 -complete
+    //Phase 1 - complete
 
     public boolean isValidMove(int currentRow, int currentCol, int futureRow, int futureCol) {
 

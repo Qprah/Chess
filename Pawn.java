@@ -5,11 +5,8 @@
  *
  * it can capture diagonally if there is piece at C+1 and R+1  or C-1 and R+1
  *
- *
- * There are 4 different code sets 2 for White and 2 for Black and each of them works when a pawn
+ * There are 4 different code sets 2 for White and 2 for Black and each of which works when a pawn
  * is allowed 2 steps in their starting position and then 1 step afterwards.
- *
- * one extra set is included to handle the exceptions - such as the Pawns on the column 0 or 7
  */
 
 public class Pawn extends ChessPiece {
@@ -29,11 +26,15 @@ public class Pawn extends ChessPiece {
 
     public boolean isValidMove(int currentRow, int currentCol, int futureRow, int futureCol) {
 
-        //-----------------------------------------------------FOR BLACK PAWN with diagonal capturing--------------------------------
+//================================================= BLACK  PAWN  BELOW =================================================
 
         /**
          * TWO STEP CODE WORKS!
          */
+        //if any piece goes up or down to bottom, nothing will happen
+        if(currentRow == 7 || currentRow == 0){
+            return false;
+        }
 
         // if the row is 6 and the piece selected is black then the pawn can move 2 steps.
         if (currentRow == 6 && getBoard().getPieceColor(currentRow, currentCol).equals(Board.black)) {
@@ -44,25 +45,45 @@ public class Pawn extends ChessPiece {
                 if (getBoard().hasPiece(currentRow - i, currentCol)) {
                     break;
                 } else {
-                    //else continue the journey!
+                    //else continue the the path with valid tiles!
                     if (currentRow - i == futureRow && currentCol == futureCol) {
+                        return true;
+                    }
+                }
+            }
+            // in case the pawn is on left side of the chessBoard it will only check the right column and not left because it doesn't exist.
+            if (currentCol == 0) {
+                if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
+                }
+            }
+            // same case is for extreme right of the board.
+            if (currentCol == 7) {
+                if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
                         return true;
                     }
                 }
             }
             //These two if blocks checks the C + 1 and C - 1 in (R-1) for the opposite color so that it can capture it!
             //ONE
-            if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
-                if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {//iteration for checking the
-                    return true;
+            if (currentCol > 0 && currentCol < 7) {
+                if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
+                }
+                //TWO
+                if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
                 }
             }
-            //TWO
-            if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
-                if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
-                    return true;
-                }
-            }
+
+
             return false;
         } // end of two step code for black
 
@@ -76,18 +97,38 @@ public class Pawn extends ChessPiece {
             // this If block checks 1 tile down
             if (getBoard().hasPiece(currentRow - 1, currentCol)) {
 
-                //These two if blocks checks the C + 1 in (R-1) for the opposite color so that it can capture it!
-                if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
-                    if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
-                        return true;
+
+                // in case the pawn is on left side of the chessBoard it will only check the right column and not left because it doesn't exist.
+                if (currentCol == 0) {
+                    if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
+                        if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
+                            return true;
+                        }
                     }
                 }
-
-                //These two if blocks checks the C - 1 in (R-1) for the opposite color so that it can capture it!
-                if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
-                    return futureRow == currentRow - 1 && futureCol == currentCol - 1;
+                // same case is for extreme right of the board.
+                if (currentCol == 7) {
+                    if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
+                        if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
+                            return true;
+                        }
+                    }
                 }
-                return false;
+                if (currentCol > 0 && currentCol < 7) {
+                    //These two if blocks checks the C + 1 and C - 1 in (R-1) for the opposite color so that it can capture it!
+                    //ONE
+                    if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
+                        if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
+                            return true;
+                        }
+                    }
+                    //TWO
+                    if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
+                        if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
+                            return true;
+                        }
+                    }
+                }
             }
 
             //so that the piece also has the option to go one tile down alongside checking the C+1 and C-1 in R-1.
@@ -97,18 +138,40 @@ public class Pawn extends ChessPiece {
                 }
             }
 
-            // these If blocks is repetition to ensure that it checks the C+1 and C-1 in R-1 for possible diagonal capturing
-            if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
-                if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {//iteration for checking the
-                    return true;
+            // in case the pawn is on left side of the chessBoard it will only check the right column and not left because it doesn't exist.
+            if (currentCol == 0) {
+                if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
                 }
             }
-            if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
-                if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
-                    return true;
+            // same case is for extreme right of the board.
+            if (currentCol == 7) {
+                if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
+                }
+            }
+            // other than extreme left and right the pawn can freely check the 3 columns in the roe below it
+            if (currentCol > 0 && currentCol < 7) {
+                //These two if blocks checks the C + 1 and C - 1 in (R-1) for the opposite color so that it can capture it!
+                //ONE
+                if (getBoard().getPieceColor(currentRow - 1, currentCol + 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
+                }
+                //TWO
+                if (getBoard().getPieceColor(currentRow - 1, currentCol - 1).equals(Board.white)) {
+                    if (futureRow == currentRow - 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
                 }
             }
         }
+//================================================= WHITE  PAWN  BELOW =================================================
 
 //------------------------------------------------FOR WHITE PAWN with diagonal capturing--------------------------------
 
@@ -134,14 +197,35 @@ public class Pawn extends ChessPiece {
             }
 
             //added for checking C+1 and C-1
-            if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
-                if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {//iteration for checking the
-                    return true;
+            // in case the pawn is on left side of the chessBoard it will only check the right column and not left because it doesn't exist.
+            if (currentCol == 0) {
+                if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
                 }
             }
-            if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
-                if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
-                    return true;
+            // same case is for extreme right of the board.
+            if (currentCol == 7) {
+                if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
+                }
+            }
+            //These two if blocks checks the C + 1 and C - 1 in (R+1) for the opposite color so that it can capture it!
+            //ONE
+            if (currentCol > 0 && currentCol < 7) {
+                if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
+                }
+                //TWO
+                if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
                 }
             }
             return false;
@@ -153,13 +237,37 @@ public class Pawn extends ChessPiece {
         if (currentRow != 1 && getBoard().getPieceColor(currentRow, currentCol).equals(Board.white)) {
 
             if (getBoard().hasPiece(currentRow + 1, currentCol)) {
-                if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
-                    if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {//iteration for checking the
-                        return true;
+                //added for checking C+1 and C-1
+                // in case the pawn is on left side of the chessBoard it will only check the right column and not left because it doesn't exist.
+                if (currentCol == 0) {
+                    if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
+                        if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {
+                            return true;
+                        }
                     }
                 }
-                if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
-                    return futureRow == currentRow + 1 && futureCol == currentCol - 1;
+                // same case is for extreme right of the board.
+                if (currentCol == 7) {
+                    if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
+                        if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
+                            return true;
+                        }
+                    }
+                }
+                //These two if blocks checks the C + 1 and C - 1 in (R+1) for the opposite color so that it can capture it!
+                //ONE
+                if (currentCol > 0 && currentCol < 7) {
+                    if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
+                        if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {
+                            return true;
+                        }
+                    }
+                    //TWO
+                    if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
+                        if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
+                            return true;
+                        }
+                    }
                 }
                 return false;
             } else {
@@ -167,14 +275,36 @@ public class Pawn extends ChessPiece {
                     return true;
                 }
             }
-            if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
-                if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {//iteration for checking the
-                    return true;
+            //added for checking C+1 and C-1
+            // in case the pawn is on left side of the chessBoard it will only check the right column and not left because it doesn't exist.
+            if (currentCol == 0) {
+                if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
                 }
             }
-            if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
-                if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
-                    return true;
+            // same case is for extreme right of the board.
+            if (currentCol == 7) {
+                if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
+                }
+            }
+            //These two if blocks checks the C + 1 and C - 1 in (R+1) for the opposite color so that it can capture it!
+            //ONE
+            if (currentCol > 0 && currentCol < 7) {
+                if (getBoard().getPieceColor(currentRow + 1, currentCol + 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol + 1) {
+                        return true;
+                    }
+                }
+                //TWO
+                if (getBoard().getPieceColor(currentRow + 1, currentCol - 1).equals(Board.black)) {
+                    if (futureRow == currentRow + 1 && futureCol == currentCol - 1) {
+                        return true;
+                    }
                 }
             }
         }

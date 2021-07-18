@@ -170,7 +170,7 @@ public class Board {
     public void drawSelectedForAllValidMoves(int row, int col) {
 
         if (hasPiece(row, col)) {
-            // get the piece frmo the tile.
+            // get the piece from the tile.
             ChessPiece cp = getPiece(row, col);
 
             // Simply brute for test
@@ -362,6 +362,8 @@ public class Board {
         boardState[0][4] = new King(white, this);
 
 
+
+
         // Create all the black pieces.
         boardState[7][0] = new Castle(black, this);
         boardState[7][7] = new Castle(black, this);
@@ -371,7 +373,6 @@ public class Board {
         boardState[7][5] = new Bishop(black, this);
         boardState[7][3] = new Queen(black, this);
         boardState[7][4] = new King(black, this);
-
 
     }
 }//Chessboard

@@ -62,7 +62,6 @@ public class Bishop extends ChessPiece {
             }
         }
 
-
         // For bottom-right diagonal
         // same concept but direction is bottom-right (R decreases and C increases)
         for (int i = 1; i <= maxIterationsBottomRight(currentRow, currentCol); i++) {
