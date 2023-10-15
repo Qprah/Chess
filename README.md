@@ -20,7 +20,8 @@ This is a simple chess game implemented in Java using the StdDraw library. The g
 1. To run the game, compile and execute the `ChessGame.java` file.
 2. Use the mouse to select and move pieces on the board.
 3. Play against a friend or yourself.
-   
+   ![image](https://github.com/Qprah/Chess/assets/62654357/c1f463d0-9af5-4a58-9bcc-ad324a426e24)
+
 ![image](https://github.com/Qprah/Chess/assets/62654357/79ff7673-ae9a-486a-87f4-d69c9c82be90)
 ![image](https://github.com/Qprah/Chess/assets/62654357/9ae2c8ab-623d-4589-b1fb-6c503d6a4d90)
 ![image](https://github.com/Qprah/Chess/assets/62654357/9301139f-15a0-4577-a525-400237622e0b)
