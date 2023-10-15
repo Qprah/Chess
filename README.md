@@ -17,7 +17,7 @@ This is a simple chess game implemented in Java using the StdDraw library. The g
 
 ## Usage
 
-1. To run the game, compile and execute the `ChessGame.java` file.
+1. To run the game, compile and execute the `GameController.java` file.
 2. Use the mouse to select and move pieces on the board.
 3. Play against a friend or yourself.
    
@@ -25,20 +25,10 @@ This is a simple chess game implemented in Java using the StdDraw library. The g
 ![image](https://github.com/Qprah/Chess/assets/62654357/1b376ec1-054f-4238-a1a3-73535dc3c131)
 ![image](https://github.com/Qprah/Chess/assets/62654357/42139745-ae6b-4d3b-ba2b-69ea0475ba97)
 
-## Future Improvements
-
-Here are some potential improvements for chess game:
-
-- Implement castling by verifying the required conditions.
-- Add pawn promotion when a pawn reaches the opposite end of the board.
-- Implement an AI opponent for single-player mode.
-- Allow players to save games.
-- Enhance the user interface with better graphics and animations.
-
 ## Contributors
 
 - Anmolpreet Singh
 
 ## License
 
-This project is open-source and available under the [MIT License](LICENSE.md).
+**Notice: This code is not open for use, modification, or distribution by anyone. Any unauthorized use is strictly prohibited.**
