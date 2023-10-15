@@ -103,9 +103,9 @@ public class Board {
 
                 // alternate squares, choose black or white to draw
                 if (isDarkSquare(row, col))
-                    StdDraw.setPenColor(StdDraw.DARK_GRAY);
+                    StdDraw.setPenColor(205,127,50);
                 else
-                    StdDraw.setPenColor(StdDraw.LIGHT_GRAY);
+                    StdDraw.setPenColor(255,217,179);
 
                 // Draw the rectangle
                 // FilledRect accepts the center point of the width, then height, followed by the half width/height of the rect.
@@ -202,14 +202,15 @@ public class Board {
 
     // Draw a green tile on the selected row
     public void drawSelectedTile(int row, int col) {
-        StdDraw.setPenColor(StdDraw.GREEN);
+        StdDraw.setPenColor(102,255,194);
         double xCenter = (2 * col + 1) / (2.0 * BOARD_SIZE);
         double yCenter = (2 * row + 1) / (2.0 * BOARD_SIZE);
 
-        // Updated from A2
         // Now we are drawing a green background with the piece on top
-        StdDraw.filledRectangle(xCenter, yCenter, TILE_RADIUS, TILE_RADIUS);
-        //StdDraw.filledCircle(xCenter, yCenter, TILE_RADIUS);
+        //StdDraw.filledRectangle(xCenter, yCenter, TILE_RADIUS, TILE_RADIUS);
+        StdDraw.filledCircle(xCenter, yCenter, TILE_RADIUS/4);
+        StdDraw.setPenColor(0,0,0);
+        StdDraw.circle(xCenter, yCenter, TILE_RADIUS/4);
 
         // Also draw the piece. (on top because it was drawn after).
         if (hasPiece(row, col)) {
@@ -245,7 +246,6 @@ public class Board {
         for (int row = 0; row < BOARD_SIZE; row++) {
             for (int col = 0; col < BOARD_SIZE; col++) {
                 if (hasPiece(row, col) && getPieceColor(row, col).equals(givenColor)) {
-                    // uncomment for assignment
                     if (getPiece(row, col) instanceof King) {
                         returnVal = true;
                     }
@@ -258,7 +258,6 @@ public class Board {
 
     // Just clear the board for now.
     public void endTurn() {
-
         StdDraw.clear();
     }
 

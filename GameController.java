@@ -199,9 +199,11 @@ public class GameController {
                     // If either team has 0, the game ends.
                     if (!whiteKing) {
                         System.out.println("Black Wins!");
+                        System.exit(0);
                     }
                     if (!blackKing) {
                         System.out.println("White Wins!");
+                        System.exit(0);
                     }
 
                 }
